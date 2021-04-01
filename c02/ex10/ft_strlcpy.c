@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 20:31:37 by mhong             #+#    #+#             */
-/*   Updated: 2021/03/31 05:04:34 by mhong            ###   ########.fr       */
+/*   Created: 2021/04/01 14:23:34 by mhong             #+#    #+#             */
+/*   Updated: 2021/04/01 17:34:59 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+int				ft_strlen(char *str)
 {
-	int tmp;
-	int left;
-	int right;
+	int i;
 
-	left = 0;
-	right = size - 1;
-	while (left < right)
+	i = 0;
+	while (str[i])
 	{
-		tmp = tab[left];
-		tab[left] = tab[right];
-		tab[right] = tmp;
-		left++;
-		right--;
+		i++;
 	}
+	return (i);
+}
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	int src_len;
+	unsigned int i;
+
+	src_len = ft_strlen(src);
+	i = 0;
+	while (src[i] && i + 1 < size)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (src_len);
 }

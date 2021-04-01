@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 20:31:37 by mhong             #+#    #+#             */
-/*   Updated: 2021/03/31 05:04:34 by mhong            ###   ########.fr       */
+/*   Created: 2021/04/01 18:28:32 by mhong             #+#    #+#             */
+/*   Updated: 2021/04/01 18:40:03 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int tmp;
-	int left;
-	int right;
+#include <stdbool.h>
 
-	left = 0;
-	right = size - 1;
-	while (left < right)
+bool	find_str(char *str, char *to_find)
+{
+	while (*to_find)
 	{
-		tmp = tab[left];
-		tab[left] = tab[right];
-		tab[right] = tmp;
-		left++;
-		right--;
+		if (*str++ != *to_find++)
+			return (false);
 	}
+	return (true);
+}
+
+char	*ft_strstr(char *str, char *to_find)
+{
+	while (*str)
+	{
+		if (*str == *to_find && find_str(str, to_find))
+			return (str);
+		str++;
+	}
+	return (str);
 }

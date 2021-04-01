@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 22:09:29 by mhong             #+#    #+#             */
-/*   Updated: 2021/03/29 22:11:44 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/01 15:42:23 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_str_is_lowercase(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str < 'a' || 'z' < str[i])
+		if (str[i] < 'a' || 'z' < str[i])
 		{
 			return (0);
 		}

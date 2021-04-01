@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 20:31:37 by mhong             #+#    #+#             */
-/*   Updated: 2021/03/31 05:04:34 by mhong            ###   ########.fr       */
+/*   Created: 2021/04/01 18:40:59 by mhong             #+#    #+#             */
+/*   Updated: 2021/04/01 18:51:02 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int tmp;
-	int left;
-	int right;
 
-	left = 0;
-	right = size - 1;
-	while (left < right)
-	{
-		tmp = tab[left];
-		tab[left] = tab[right];
-		tab[right] = tmp;
-		left++;
-		right--;
-	}
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 20:31:37 by mhong             #+#    #+#             */
-/*   Updated: 2021/03/31 05:04:34 by mhong            ###   ########.fr       */
+/*   Created: 2021/04/01 16:36:45 by mhong             #+#    #+#             */
+/*   Updated: 2021/04/01 17:09:21 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int tmp;
-	int left;
-	int right;
+	int i;
 
-	left = 0;
-	right = size - 1;
-	while (left < right)
+	i = 0;
+	while (s1[i] && s2[i])
 	{
-		tmp = tab[left];
-		tab[left] = tab[right];
-		tab[right] = tmp;
-		left++;
-		right--;
+		if (s1[i] != s2[i])
+		{
+			return (s1[i] > s2[i] ? 1 : -1);
+		}
+		i++;
 	}
+	if (!s1[i] && !s2[i])
+		return (0);
+	else
+		return (s1[i] ? 1 : -1);
 }

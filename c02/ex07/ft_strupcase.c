@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 20:31:37 by mhong             #+#    #+#             */
-/*   Updated: 2021/03/31 05:04:34 by mhong            ###   ########.fr       */
+/*   Created: 2021/03/30 12:11:23 by mhong             #+#    #+#             */
+/*   Updated: 2021/03/30 23:52:21 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
+char	*ft_strupcase(char *str)
 {
-	int tmp;
-	int left;
-	int right;
+	int i;
 
-	left = 0;
-	right = size - 1;
-	while (left < right)
+	i = 0;
+	while (str[i])
 	{
-		tmp = tab[left];
-		tab[left] = tab[right];
-		tab[right] = tmp;
-		left++;
-		right--;
+		if ('a' <= str[i] && str[i] <= 'z')
+		{
+			str[i] = str[i] - 'a' + 'A';
+		}
+		i++;
 	}
+	return (str);
 }
