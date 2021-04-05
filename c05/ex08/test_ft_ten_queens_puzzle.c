@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 23:21:38 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/05 14:33:58 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/05 12:51:13 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,14 @@ bool	check_row(int row_num, int col_num)
 {
 	while (col_num >= 0)
 	{
-		if (g_board[row_num][col_num--])
+		if	(g_board[row_num][col_num--])
 			return (false);
 	}
 	return (true);
 }
 
-bool	check_left(int row_num, int col_num)
+bool	check_left_up(int row_num, int col_num)
 {
-	int r_n;
-	int c_n;
-
-	r_n = row_num;
-	c_n = col_num;
-	while (r_n <= 9 && c_n >= 0)
-	{
-		if (g_board[r_n++][c_n--])
-			return (false);
-	}
 	while (row_num >= 0 && col_num >= 0)
 	{
 		if (g_board[row_num--][col_num--])
@@ -46,10 +36,37 @@ bool	check_left(int row_num, int col_num)
 	return (true);
 }
 
+bool	check_left_down(int row_num, int col_num)
+{
+	while (row_num <= 9 && col_num >= 0)
+	{
+		if (g_board[row_num++][col_num--])
+			return (false);
+	}
+	return (true);
+}
+
+void	init()
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < 10)
+	{
+		j = 0;
+		while (j < 10)
+		{
+			g_board[i][j++] = 0;
+		}
+		g_result[i] = 0;
+		i++;
+	}
+}
 void	print_board(void)
 {
-	char	c;
-	int		idx;
+	char c;
+	int idx;
 
 	idx = 0;
 	while (idx <= 9)
@@ -59,7 +76,6 @@ void	print_board(void)
 	}
 	write(1, "\n", 1);
 }
-
 void	play_game(int queen)
 {
 	int row_idx;
@@ -67,12 +83,13 @@ void	play_game(int queen)
 	if (queen == 10)
 	{
 		print_board();
-		return ;
+		return;
 	}
 	row_idx = 0;
 	while (row_idx <= 9)
 	{
-		if (check_row(row_idx, queen) && check_left(row_idx, queen))
+		if (check_row(row_idx, queen) && check_left_up(row_idx, queen)
+				&& check_left_down(row_idx, queen))
 		{
 			g_board[row_idx][queen] = 1;
 			g_result[queen] = row_idx;
@@ -80,25 +97,13 @@ void	play_game(int queen)
 			g_board[row_idx][queen] = 0;
 		}
 		row_idx++;
-	}
+	}	
 }
 
 int		ft_ten_queens_puzzle(void)
 {
 	int first_queen;
-	int i;
-	int j;
 
-	i = 0;
-	while (i <= 9)
-	{
-		j = 0;
-		while (j <= 9)
-		{
-			g_board[i][j++] = 0;
-		}
-		g_result[i++] = 0;
-	}
 	first_queen = 0;
 	while (first_queen <= 9)
 	{
@@ -107,4 +112,10 @@ int		ft_ten_queens_puzzle(void)
 		play_game(1);
 		g_board[first_queen++][0] = 0;
 	}
+}
+
+
+int		main()
+{
+	ft_ten_queens_puzzle();
 }
