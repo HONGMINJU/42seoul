@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_ft_atoi_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:20:57 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/03 21:33:10 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/07 02:04:05 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ bool have_seen_before(char *base, int max_len, char what)
 	return false;
 }
 
-bool is_space(char c)
-{
-	return (c == ' '|| c == '\n' || c == '\t'
-			|| c == '\v' || c == '\f' || c == '\r');
-}
-
 bool is_vaild_base(char *base)
 {
 	int base_len;
@@ -41,7 +35,9 @@ bool is_vaild_base(char *base)
 	{
 		if (base[base_len] == '-' || base[base_len] == '+')
 			return false;
-		if (is_space(base[base_len]))
+		if ((base[base_len] == ' '|| base[base_len] == '\n' ||
+		base[base_len] == '\t' || base[base_len] == '\v' || base[base_len] == '\f'
+		|| base[base_len] == '\r'))
 			return false;
 		if (have_seen_before(base, base_len, base[base_len]))
 			return false;
@@ -60,40 +56,52 @@ int ft_strlen(char *str)
 		str_len++;
 	return (str_len);
 }
+int recur_func(char *str, char *base, int base_len, int num)
+{
+	int idx;
+	printf("num : %d ,str : %s\n",num, str);
+	if (!*str || *str < '0' || '9' < *str)
+		return (num);
+	idx = 0;
+	while (*str != base[idx])
+		idx++;
+	num = (num * base_len) + idx;
+	return recur_func(++str, base, base_len, num);
+}
 int	ft_atoi_base(char *str, char *base)
 {
-	int base_idx;
 	int base_len;
-	int str_len;
-	int cnt;
-	int num;
+	bool minus_flag;
+	int result;
 
-	num=0;
+	minus_flag = false;
 	base_len = ft_strlen(base);
-	str_len = ft_strlen(str);
-	cnt = 1;
+	result = 0;
 	if (!is_vaild_base(base))
-	{
 		return (0);
-	}
-	while (str_len-- > 0)
+	while (*str && (*str == ' '|| *str == '\n' || *str == '\t' ||
+	*str == '\v' || *str == '\f' || *str == '\r'))
+		str++;	
+	while(*str && (*str == '-' || *str == '+'))
 	{
-		base_idx =0;
-		while (base[base_idx] != str[str_len])
-			base_idx++;
-		num = num + (cnt * base_idx);
-		cnt *= base_len;
+		if (*str == '-')
+			minus_flag = !minus_flag;
+		str++;
 	}
-	return num;
+	
+	printf("str : %s\n",str);
+	printf("flag: %d\n",minus_flag);
+	result = recur_func(str, base, base_len, 0);
+	return (minus_flag ? (-1) * result : result);
 }
 
 int main()
 {
-	char num[]="101011";
-	char base[]="0123456+789";
+	char num[]="  		 +-+--abcaafab";
+	char base[]="abc";
 	int result = ft_atoi_base(num,base);
 
 	printf("num(str) : %s\n",num);
 	printf("base : %s\n",base);
-	printf("num(int) : %d\n",result);                      
+	printf("num(int) : %d\n",result);
 }

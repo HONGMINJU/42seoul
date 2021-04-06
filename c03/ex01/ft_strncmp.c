@@ -6,25 +6,22 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:09:47 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/03 14:36:56 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/06 23:32:59 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
-	while (s1[i] && s2[i] && i + 1 < n)
+	while (s1[i] && s2[i] && i < n)
 	{
 		if (s1[i] != s2[i])
 		{
-			return (s1[i] > s2[i] ? 1 : -1);
+			return (s1[i] - s2[i]);
 		}
 		i++;
 	}
-	if (s1[i] == s2[i])
-		return (0);
-	else
-		return (s1[i] > s2[i] ? 1 : -1);
+	return (s1[i] - s2[i]);
 }

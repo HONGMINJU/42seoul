@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:02:44 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/03 17:37:42 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/07 03:46:44 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_atoi(char *str)
 	minus_cnt = 0;
 	while (*str && is_space(*str))
 		str++;
-	while (*str && !is_number(*str))
+	while (*str && (*str == '-' || *str == '+'))
 	{
 		if (*str == '-')
 			minus_cnt++;
