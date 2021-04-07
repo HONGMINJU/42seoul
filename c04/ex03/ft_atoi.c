@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:02:44 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/07 03:46:44 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/07 22:16:43 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,18 @@ bool	is_number(char c)
 int		ft_atoi(char *str)
 {
 	int		number;
-	int		minus_cnt;
 	bool	is_minus;
 
 	number = 0;
-	minus_cnt = 0;
+	is_minus = false;
 	while (*str && is_space(*str))
 		str++;
 	while (*str && (*str == '-' || *str == '+'))
 	{
 		if (*str == '-')
-			minus_cnt++;
+			is_minus = !is_minus;
 		str++;
 	}
-	is_minus = (minus_cnt % 2 == 1 ? true : false);
 	while (*str && is_number(*str))
 	{
 		number = (number * 10) + (*str - '0');

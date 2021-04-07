@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:02:44 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/07 03:35:53 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/07 22:20:17 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,18 @@ bool	is_number(char c)
 int		ft_atoi(char *str)
 {
 	int		number;
-	int		minus_cnt;
 	bool	is_minus;
 
 	number = 0;
-	minus_cnt = 0;
+	is_minus = false;
 	while (*str && is_space(*str))
 		str++;
 	while (*str && (*str == '-' || *str == '+'))
 	{
 		if (*str == '-')
-			minus_cnt++;
+			is_minus = !is_minus;
 		str++;
 	}
-	is_minus = (minus_cnt % 2 == 1 ? true : false);
 	while (*str && is_number(*str))
 	{
 		number = (number * 10) + (*str - '0');
@@ -53,6 +51,7 @@ int		ft_atoi(char *str)
 
 int main()
 {
-	char c[]="  	--+-aaa123";
-	printf("number : %d",ft_atoi(c));
+	char c[]="  	--+-21474836048ff";
+	printf("str : %s\n",c);
+	printf("number : %d\n",ft_atoi(c));
 }

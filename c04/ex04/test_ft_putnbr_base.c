@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:39:33 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/07 03:45:58 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/07 22:40:01 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ void 	ft_putnbr_base(int nbr, char *base)
 
 int main()
 {
-	char base[]="0c1234567d89";
-	ft_putnbr_base(-2147483648,base);
+	char base[]="0123456789abcdef";
+	ft_putnbr_base(2147483647,base);
 }
