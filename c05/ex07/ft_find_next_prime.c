@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:44:59 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/08 21:27:57 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/08 21:37:11 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	is_prime(int nb)
 	sqrt = ft_sqrt(nb);
 	while (num <= sqrt)
 	{
-		if (nb % num== 0)
+		if (nb % num == 0)
 			return (0);
 		num++;
 	}
@@ -47,12 +47,12 @@ int	is_prime(int nb)
 int	ft_find_next_prime(int nb)
 {
 	int num;
-	
-	if(nb < 2)
+
+	if (nb < 2)
 		num = 2;
 	else
 		num = nb;
-	while(!is_prime(num))
+	while (!is_prime(num))
 		num++;
 	return (num);
 }
