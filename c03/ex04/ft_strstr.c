@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:28:32 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/07 21:19:43 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/08 13:53:45 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ bool	find_str(char *str, char *to_find)
 
 char	*ft_strstr(char *str, char *to_find)
 {
+	if (!*to_find)
+		return (str);
 	while (*str)
 	{
 		if (*str == *to_find && find_str(str, to_find))

@@ -6,13 +6,13 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:40:59 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/07 21:59:41 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/08 09:59:15 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned int	ft_strlen(char *str)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (str[i])
