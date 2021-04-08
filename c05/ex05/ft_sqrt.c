@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:30:15 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/03 22:36:01 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/08 18:37:59 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+//long long
 int	ft_sqrt(int nb)
 {
-	int num;
+	long long num;
 
 	num = 0;
-	while (num * num <= nb && num < 46350)
+	while (num * num <= nb)
 	{
 		if (num * num == nb)
 			return (num);

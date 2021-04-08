@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_strlen(char *str)
+unsigned int	ft_strlen(char *str)
 {
 	int i;
 
@@ -25,8 +25,8 @@ int				ft_strlen(char *str)
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
-	int				dest_len;
-	int				src_len;
+	unsigned int	dest_len;
+	unsigned int	src_len;
 
 	dest_len = ft_strlen(dest);
 	src_len = ft_strlen(src);
