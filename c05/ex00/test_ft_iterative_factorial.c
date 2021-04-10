@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   test_ft_iterative_factorial.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 21:36:25 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/03 21:45:36 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/08 16:48:27 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ int	ft_iterative_factorial(int nb)
 {
 	int num;
 	int cnt;
+	
 	if (nb < 0)
-	{
 		return (0);
-	}
 	num = 1;
 	cnt = 1;
 	while (cnt <= nb)
@@ -31,6 +30,6 @@ int	ft_iterative_factorial(int nb)
 
 int main()
 {
-	int num = 0;
+	int num = -200;
 	printf("result :%d\n",ft_iterative_factorial(num));
 }

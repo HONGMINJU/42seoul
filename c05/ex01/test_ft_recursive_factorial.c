@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   test_ft_recursive_factorial.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 21:47:35 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/03 21:52:22 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/08 16:48:35 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_recursive_factorial(int nb)
 {
+	if (nb < 0)
+		return (0);
 	if (nb == 0)
 		return 1;
 	return (nb * ft_recursive_factorial(nb - 1));
@@ -21,6 +23,6 @@ int	ft_recursive_factorial(int nb)
 
 int main()
 {
-	int num = 11;
+	int num = -200;
 	printf("result : %d\n",ft_recursive_factorial(num));
 }
