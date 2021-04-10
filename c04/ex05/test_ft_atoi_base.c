@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   test_ft_atoi_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:20:57 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/10 22:22:20 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/10 22:20:27 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdbool.h>
 
 bool	have_seen_before(char *base, int max_len, char what)
@@ -66,11 +67,11 @@ int		recur_func(char *str, char *base, int base_len, int num)
 	idx = 0;
 	while (base[idx] && *str != base[idx])
 		idx++;
-	if (idx == base_len && *str != base[idx])
+	if(idx == base_len && *str != base[idx])
 		return (num);
-	else
-	{
+	else{
 		num = (num * base_len) + idx;
+		printf("num : %d, idx : %d, base_len : %d\n",num, idx, base_len);
 		return (recur_func(++str, base, base_len, num));
 	}
 }
@@ -97,4 +98,13 @@ int		ft_atoi_base(char *str, char *base)
 	}
 	result = recur_func(str, base, base_len, 0);
 	return (minus_flag ? (-1) * result : result);
+}
+
+int main()
+{
+	char str[]= "1a00131";
+	char base[] = "01";
+	printf("str : %s\nbase : %s\n",str, base);
+	printf("result : %d\n",ft_atoi_base(str,base));
+
 }
