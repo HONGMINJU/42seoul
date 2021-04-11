@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:36:40 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/08 21:23:51 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/11 10:14:25 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_is_prime(int nb)
 
 int main()
 {
-	int num =  2147483647;
+	int num =  98;
 	printf("num : %d\n",num);
 	printf("result : %d\n",ft_is_prime(num));
 }

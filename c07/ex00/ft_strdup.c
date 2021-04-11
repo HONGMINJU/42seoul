@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_fibonacci.c                                :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 22:08:44 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/11 10:10:24 by mhong            ###   ########.fr       */
+/*   Created: 2021/04/11 15:17:42 by mhong             #+#    #+#             */
+/*   Updated: 2021/04/11 19:47:49 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 
-int	ft_fibonacci(int index, int before_before, int before)
+long long ft_strlen(char *str)
 {
-	if (index < 0)
-		return (-1);
-	if (index == 0)
-		return (before_before);
-	if (index == 1)
-		return (before);
-	return (ft_fibonacci(index - 1, before, before_before + before));
+	long long i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
-int main()
+
+char *ft_strdup(char *src)
 {
-	int num = 74;
-	printf("num : %d\n",num);
-	printf("result : %d\n",ft_fibonacci(num, 0, 1));
+	int idx;
+	long long len;
+	char *res;
+
+	len = ft_strlen(src);
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (0);
+	idx = 0;
+	while (src[idx])
+	{
+		res[idx] = src[idx];
+		idx++;
+	}
+	res[idx] = '\0';
+	return (res);
 }

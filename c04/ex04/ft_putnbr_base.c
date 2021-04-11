@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:39:33 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/10 21:33:18 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/11 16:25:33 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ bool	is_vaild_base(char *base)
 	return (true);
 }
 
-void	ft_putnbr_base_recursive(unsigned int nbnb, char *base, int base_len)
+void	ft_putnbr_base_recursive(unsigned int nb, char *base, unsigned int len)
 {
-	if (nbnb >= base_len)
-		ft_putnbr_base_recursive(nbnb / base_len, base, base_len);
-	write(1, &base[nbnb % base_len], 1);
+	if (nb >= len)
+		ft_putnbr_base_recursive(nb / len, base, len);
+	write(1, &base[nb % len], 1);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int				base_len;
+	unsigned int	base_len;
 	unsigned int	nb;
 
 	nb = nbr;

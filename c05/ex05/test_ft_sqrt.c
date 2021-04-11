@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:30:15 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/08 18:37:52 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/11 10:12:21 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_sqrt(int nb)
 
 int main()
 {
-	int num = 2147395600;
+	int num = 980100;
 	printf("num : %d\n",num);
 	printf("result : %d\n",ft_sqrt(num));
 }

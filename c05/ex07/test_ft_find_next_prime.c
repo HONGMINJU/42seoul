@@ -6,7 +6,7 @@
 /*   By: mhong <mhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:44:59 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/08 21:27:33 by mhong            ###   ########.fr       */
+/*   Updated: 2021/04/11 10:15:50 by mhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_find_next_prime(int nb)
 
 int main()
 {
-	int num = 0;
+	int num = 17;
 	printf("num : %d\n",num);
 	printf("next prime : %d\n",ft_find_next_prime(num));
 }
