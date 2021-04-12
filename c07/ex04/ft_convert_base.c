@@ -1,122 +1,117 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base2.c                                 :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhong <mhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: minju <minju@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 11:14:35 by mhong             #+#    #+#             */
-/*   Updated: 2021/04/12 14:03:53 by mhong            ###   ########.fr       */
+/*   Created: 2021/04/13 00:19:40 by minju             #+#    #+#             */
+/*   Updated: 2021/04/13 00:25:29 by minju            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+
 #include <stdlib.h>
 
-int		g_base[2][256];
-int		g_base2_len;
-int		g_new_str_len;
-char	*g_new_str;
-int		g_num;
-bool	g_is_minus;
+void	ft_putnbr_base(int nbr, char *base, char *retour, int *i);
 
-bool	is_valid_base(char *str, int what_base)
+int		ft_base_error(char *base)
 {
-	int len;
+	int	i;
+	int	j;
 
-	len = 0;
-	while (str[len])
+	i = 0;
+	while (base[i])
 	{
-		if (str[len] == '-' || str[len] == '+')
-			return (false);
-		if (g_base[what_base - 1][str[len]])
-			return (false);
-		g_base[what_base - 1][str[len]] = 1;
-		len++;
+		j = 0;
+		while (base[j])
+		{
+			if (base[i] == base[j] && i != j)
+				return (0);
+			j++;
+		}
+		if (base[i] == ' ' || base[i] == '\f' || base[i] == '\n' ||
+				base[i] == '\r' || base[i] == '\t' || base[i] == '\v' ||
+				base[i] == '-' || base[i] == '+')
+			return (0);
+		i++;
 	}
-	return (true);
+	return (i);
 }
 
-void	init(void)
+int		ft_atoi_base_test(char str, char *base)
 {
-	int idx;
+	int retour;
+	int i;
 
-	idx = 0;
-	while (idx < 256)
+	retour = 0;
+	i = 0;
+	while (base[i])
 	{
-		g_base[0][idx] = 0;
-		g_base[1][idx] = 0;
-		idx++;
+		if (str == base[i])
+			return (i);
+		i++;
 	}
-	g_num = 0;
-	g_base2_len = 0;
-	g_new_str_len = 0;
-	g_is_minus = false;
+	return (-1);
 }
 
-int		ft_strlen(char *str)
+int		ft_atoi_base(char *str, char *base)
 {
-	int len;
+	int		i;
+	int		nb;
+	int		tmp;
+	int		len;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	nb = 0;
+	i = 0;
+	len = ft_base_error(base);
+	if (len >= 2)
+	{
+		tmp = ft_atoi_base_test(str[i], base);
+		while (tmp != -1)
+		{
+			nb = (nb * len) + tmp;
+			i++;
+			tmp = ft_atoi_base_test(str[i], base);
+		}
+		return (nb);
+	}
+	return (0);
 }
 
-int		ft_atoi_base(char *nbr, char *base)
+int		ft_convert_base_sizeof(int nb, char *base)
 {
-	int num;
-	int base_len;
-	int idx;
+	int sbase;
+	int stab;
 
-	num = 0;
-	base_len = ft_strlen(base);
-	while (*nbr && (*nbr == ' ' || *nbr == '\n' || *nbr == '\t' ||
-				*nbr == '\r' || *nbr == '\f' || *nbr == '\v'))
-		nbr++;
-	while (*nbr && (*nbr == '-' || *nbr == '+'))
+	sbase = 0;
+	while (base[sbase])
+		sbase++;
+	stab = 1;
+	while (nb >= sbase)
 	{
-		if (*nbr == '-')
-			g_is_minus = !g_is_minus;
-		nbr++;
+		nb /= sbase;
+		stab++;
 	}
-	while (*nbr && g_base[0][*nbr])
-	{
-		idx = 0;
-		while (base[idx] != *nbr)
-			idx++;
-		num = (num * base_len) + idx;
-		nbr++;
-	}
-	return (num);
+	return (stab);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int tmp;
+	int		decimal;
+	int		msize;
+	int		i;
+	char	*retour;
 
-	init();
-	if (!is_valid_base(base_from, 1) || !is_valid_base(base_to, 2))
-		return (NULL);
-	g_num = ft_atoi_base(nbr, base_from);
-	tmp = g_num;
-	g_base2_len = ft_strlen(base_to);
-	while (tmp)
+	decimal = ft_atoi_base(nbr, base_from);
+	if (decimal != 0)
 	{
-		tmp /= g_base2_len;
-		g_new_str_len++;
+		msize = ft_convert_base_sizeof(decimal, base_to);
+		retour = malloc(sizeof(char) * msize + 1);
+		i = 0;
+		ft_putnbr_base(decimal, base_to, retour, &i);
+		return (retour);
 	}
-	g_new_str_len = (g_is_minus ? g_new_str_len + 1 : g_new_str_len);
-	if (!(g_new_str = (char *)malloc(sizeof(char) * (g_new_str_len + 1))))
+	else
 		return (NULL);
-	g_new_str[g_new_str_len--] = '\0';
-	while (g_num)
-	{
-		g_new_str[g_new_str_len] = base_to[g_num % g_base2_len];
-		g_num /= g_base2_len;
-		g_new_str_len--;
-	}
-	g_new_str[0] = (g_is_minus ? '-' : g_new_str[0]);
-	return (g_new_str);
 }
